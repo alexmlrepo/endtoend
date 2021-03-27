@@ -10,7 +10,7 @@ steps:
 - task: Npm@1
   displayName: 'Build and Run'
   inputs:
-    command: custom
+    command: 'install'
     verbose: false
     customCommand: start
 - task: PublishTestResults@2
