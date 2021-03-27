@@ -1,0 +1,28 @@
+pool:
+  name: Hosted Ubuntu 1604
+  demands: npm
+
+steps:
+- task: Npm@1
+  displayName: 'Install Dependencies'
+  inputs:
+    verbose: false
+- task: Npm@1
+  displayName: 'Build and Run'
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: start
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results'
+  inputs:
+    testResultsFiles: 'reports/*.xml'
+    mergeTestResults: true
+    failTaskOnFailedTests: true
+  condition: succeededOrFailed()
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Screenshots'
+  inputs:
+    PathtoPublish: screenshots/results
+    ArtifactName: Screenshots
+  condition: succeededOrFailed()

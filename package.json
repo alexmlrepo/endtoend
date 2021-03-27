@@ -1,0 +1,42 @@
+{
+  "name": "examples-nightwatch",
+  "version": "1.0.0",
+  "description": "Example setup for running Nightwatch.js in an Azure Pipeline.",
+  "scripts": {
+    "start": "npm run build && npm run test",
+    "test:ci": "npm run build && nightwatch -e default",
+    "test:local": "npm run build && nightwatch -e local",
+    "build": "tsc --project tsconfig.json",
+    "prettify": "prettier --config prettier.config.js --write \"src/**/*.{ts,tsx}\"",
+    "test": "nightwatch"
+  },
+  "keywords": [
+    "nightwatch",
+    "e2e",
+    "tests",
+    "ui",
+    "azure",
+    "pipeline",
+    "devops"
+  ],
+  "author": "Florian Rappl",
+  "license": "MIT",
+  "dependencies": {
+    "chromedriver": "^2.46.0",
+    "mkdirp": "^0.5.1",
+    "nightwatch": "^1.0.19",
+    "node-resemble-js": "^0.2.0",
+    "request": "^2.88.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/mkdirp": "^0.5.2",
+    "@types/nightwatch": "^0.9.12",
+    "@types/node": "^11.11.3",
+    "@types/request": "^2.48.1",
+    "@types/resemblejs": "^1.3.28",
+    "@types/uuid": "^3.4.4",
+    "prettier": "^1.16.4",
+    "typescript": "^3.3.3333"
+  }
+}
